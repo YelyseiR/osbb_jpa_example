@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+
+    <persistence-unit name="osbb" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>org.example.data.OwnershipRights</class>
+        <class>org.example.data.Apartments</class>
+        <class>org.example.data.OsbbMembers</class>
+        <class>org.example.data.Residents</class>
+        <class>org.example.data.Buildings</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/osbb"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="GOIT12345"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.transaction.jta.platform"
+                      value="org.hibernate.service.jta.platform.internal.JtaPlatformInitiator.GlassFish"/>
+        </properties>
+    </persistence-unit>
+</persistence>
