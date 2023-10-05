@@ -3,6 +3,7 @@ package org.example;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import org.example.data.FileWriter;
 import org.example.data.OsbbCrud;
 import org.example.data.OwnerInfoResult;
 
@@ -15,7 +16,8 @@ public class App {
         OsbbCrud osbbCrud = new OsbbCrud(em);
         List<OwnerInfoResult> residents = osbbCrud.getOwnersWithoutCarPermissionAndLessThanTwoApartments();
         System.out.println(residents);
-        osbbCrud.saveResultToFile(residents, "result.txt");
+        FileWriter fileWriter = new FileWriter();
+        fileWriter.saveResultToFile(residents, "result.txt");
         em.close();
         emf.close();
     }

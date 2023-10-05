@@ -3,9 +3,6 @@ package org.example.data;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.*;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,26 +48,6 @@ public class OsbbCrud {
             ownerInfoResults.add(ownerInfoResult);
         }
         return ownerInfoResults;
-    }
-
-    public void saveResultToFile(List<OwnerInfoResult> owners, String filePath) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (OwnerInfoResult owner : owners) {
-                String line = String.format(
-                        "Ім'я: %s, Прізвище: %s, Email: %s, Номер будинку: %s, Номер квартири: %s, Площа квартири: %.2f, Адреса будинку: %s%n",
-                        owner.name(),
-                        owner.surname(),
-                        owner.email(),
-                        owner.buildingNumber(),
-                        owner.apartmentNumber(),
-                        owner.area(),
-                        owner.address()
-                );
-                writer.write(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
 
